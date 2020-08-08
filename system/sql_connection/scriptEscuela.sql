@@ -1,0 +1,425 @@
+/*==============================================================*/
+/* DBMS name:      MySQL 5.0                                    */
+/* Created on:     29/7/2020 2:10:41                            */
+/*==============================================================*/
+
+
+
+
+/*==============================================================*/
+/* Table: ALUMNO_ASIGNATURA_PERIODO                             */
+/*==============================================================*/
+CREATE TABLE ALUMNO_ASIGNATURA_PERIODO
+(
+   COD_ASIG_PERIODO	INT NOT NULL,
+   COD_ALUMNO           INT NOT NULL,
+   COD_ASIGNATURA       INT NOT NULL,
+   COD_NIVEL_EDUCATIVO  INT NOT NULL,
+   COD_PERIODO_LECTIVO  INT NOT NULL,
+   COD_DOCENTE          INT NOT NULL,
+   COD_PARALELO         INT NOT NULL,
+   NOTA1                NUMERIC(4,2),
+   NOTA2                NUMERIC(4,2),
+   NOTA3                NUMERIC(4,2),
+   NOTA4                NUMERIC(4,2),
+   NOTA5                NUMERIC(4,2),
+   NOTA6                NUMERIC(4,2),
+   NOTA7                NUMERIC(4,2),
+   NOTA8                NUMERIC(4,2),
+   NOTA9                NUMERIC(4,2),
+   NOTA10               NUMERIC(4,2),
+   NOTA11               NUMERIC(4,2),
+   NOTA12               NUMERIC(4,2),
+   NOTA13               NUMERIC(4,2),
+   NOTA14               NUMERIC(4,2),
+   NOTA15               NUMERIC(4,2),
+   PRIMARY KEY (COD_ASIG_PERIODO, COD_ALUMNO, COD_ASIGNATURA, COD_NIVEL_EDUCATIVO, COD_PERIODO_LECTIVO, COD_DOCENTE, COD_PARALELO)
+);
+
+/*==============================================================*/
+/* Table: ASIGNATURA                                            */
+/*==============================================================*/
+CREATE TABLE ASIGNATURA
+(
+   COD_ASIGNATURA       INT NOT NULL AUTO_INCREMENT,
+   COD_NIVEL_EDUCATIVO  INT NOT NULL,
+   NOMBRE               VARCHAR(100) NOT NULL,
+   CREDITOS             NUMERIC(2) NOT NULL,
+   TIPO                 VARCHAR(3) NOT NULL,
+   PRIMARY KEY (COD_ASIGNATURA, COD_NIVEL_EDUCATIVO)
+);
+
+/*==============================================================*/
+/* Table: ASIGNATURA_PERIODO                                    */
+/*==============================================================*/
+CREATE TABLE ASIGNATURA_PERIODO
+(
+   COD_ASIGNATURA       INT NOT NULL,
+   COD_NIVEL_EDUCATIVO  INT NOT NULL,
+   COD_PERIODO_LECTIVO  INT NOT NULL,
+   COD_DOCENTE          INT NOT NULL,
+   COD_PARALELO         INT NOT NULL,
+   COD_AULA             INT NOT NULL,
+   PRIMARY KEY (COD_ASIGNATURA, COD_NIVEL_EDUCATIVO, COD_PERIODO_LECTIVO, COD_DOCENTE, COD_PARALELO)
+);
+
+/*==============================================================*/
+/* Table: ASISTENCIA_PERIODO                                    */
+/*==============================================================*/
+CREATE TABLE ASISTENCIA_PERIODO
+(
+   FECHA                DATE NOT NULL,
+   COD_ALUMNO           INT NOT NULL,
+   COD_PERIODO_LECTIVO  INT NOT NULL,
+   COD_NIVEL_EDUCATIVO  INT NOT NULL,
+   ESTADO               VARCHAR(3),
+   PRIMARY KEY (FECHA, COD_ALUMNO, COD_PERIODO_LECTIVO, COD_NIVEL_EDUCATIVO)
+);
+
+/*==============================================================*/
+/* Table: ASPIRANTE                                             */
+/*==============================================================*/
+CREATE TABLE ASPIRANTE
+(
+   COD_ASPIRANTE        INT NOT NULL AUTO_INCREMENT,
+   CEDULA               VARCHAR(10) NOT NULL,
+   APELLIDO             VARCHAR(50) NOT NULL,
+   NOMBRE               VARCHAR(50) NOT NULL,
+   DIRECCION            VARCHAR(100),
+   TELEFONO             VARCHAR(15),
+   FECHA_NACIMIENTO     DATE,
+   GENERO               VARCHAR(3),
+   CORREO_PERSONAL      VARCHAR(128) NOT NULL,
+   PRIMARY KEY (COD_ASPIRANTE)
+);
+
+/*==============================================================*/
+/* Table: AULA                                                  */
+/*==============================================================*/
+CREATE TABLE AULA
+(
+   COD_AULA             INT NOT NULL AUTO_INCREMENT,
+   COD_EDIFICIO         INT NOT NULL,
+   NOMBRE               VARCHAR(100) NOT NULL,
+   CAPACIDAD            NUMERIC(3) NOT NULL,
+   TIPO                 VARCHAR(3) NOT NULL DEFAULT 'GEN',
+   PISO                 NUMERIC(2) NOT NULL,
+   PRIMARY KEY (COD_AULA)
+);
+
+/*==============================================================*/
+/* Table: CALIFICACION_PRUEBA_ASPIRANTE                         */
+/*==============================================================*/
+CREATE TABLE CALIFICACION_PRUEBA_ASPIRANTE
+(
+   COD_ASPIRANTE        INT NOT NULL,
+   COD_NIVEL_EDUCATIVO  INT NOT NULL,
+   CALIFICACION         NUMERIC(4,2),
+   ESTADO               VARCHAR(3)
+);
+
+/*==============================================================*/
+/* Table: COMUNICADO_ASIGNATURA                                 */
+/*==============================================================*/
+CREATE TABLE COMUNICADO_ASIGNATURA
+(
+   COD_COMUNICADO       INT NOT NULL,
+   COD_ASIGNATURA       INT NOT NULL,
+   COD_NIVEL_EDUCATIVO  INT NOT NULL,
+   COD_PERIODO_LECTIVO  INT NOT NULL,
+   COD_DOCENTE          INT NOT NULL,
+   COD_PARALELO         INT NOT NULL,
+   ASUNTO_COMUNICADO   VARCHAR(200),
+   DETALLE_COMUNICADO   VARCHAR(200),
+   PRIMARY KEY (COD_COMUNICADO)
+);
+
+/*==============================================================*/
+/* Table: CRONOGRAMA_PERIODO                                    */
+/*==============================================================*/
+CREATE TABLE CRONOGRAMA_PERIODO
+(
+   COD_CRONOGRAMA_PERIODO INT NOT NULL AUTO_INCREMENT,
+   COD_PERIODO_LECTIVO  INT NOT NULL,
+   FECHA                DATE NOT NULL,
+   TIPO                 VARCHAR(3),
+   DESCRIPCION          VARCHAR(1000),
+   PRIMARY KEY (COD_CRONOGRAMA_PERIODO)
+);
+
+/*==============================================================*/
+/* Table: EDIFICIO                                              */
+/*==============================================================*/
+CREATE TABLE EDIFICIO
+(
+   COD_EDIFICIO         INT NOT NULL AUTO_INCREMENT,
+   COD_SEDE             INT NOT NULL,
+   NOMBRE               VARCHAR(100) NOT NULL,
+   CANTIDAD_PISOS       NUMERIC(2) NOT NULL,
+   PRIMARY KEY (COD_EDIFICIO)
+);
+
+/*==============================================================*/
+/* Table: MATRICULA_PERIODO                                     */
+/*==============================================================*/
+CREATE TABLE MATRICULA_PERIODO
+(
+   COD_ALUMNO           INT NOT NULL,
+   COD_PERIODO_LECTIVO  INT NOT NULL,
+   COD_NIVEL_EDUCATIVO  INT NOT NULL,
+   PROMEDIOQ1           NUMERIC(4,2),
+   PROMEDIOQ2           NUMERIC(4,2),
+   PROMEDIO_FINAL       NUMERIC(4,2),
+   PRIMARY KEY (COD_ALUMNO, COD_PERIODO_LECTIVO, COD_NIVEL_EDUCATIVO)
+);
+
+/*==============================================================*/
+/* Table: NIVEL_EDUCATIVO                                       */
+/*==============================================================*/
+CREATE TABLE NIVEL_EDUCATIVO
+(
+   COD_NIVEL_EDUCATIVO  INT NOT NULL AUTO_INCREMENT,
+   NOMBRE               VARCHAR(100),
+   NIVEL                VARCHAR(3),
+   PRIMARY KEY (COD_NIVEL_EDUCATIVO)
+);
+
+/*==============================================================*/
+/* Table: PARALELO                                              */
+/*==============================================================*/
+CREATE TABLE PARALELO
+(
+   COD_PARALELO         INT NOT NULL AUTO_INCREMENT,
+   COD_NIVEL_EDUCATIVO  INT,
+   NOMBRE               VARCHAR(100) NOT NULL,
+   PRIMARY KEY (COD_PARALELO)
+);
+
+/*==============================================================*/
+/* Table: PERIODO_LECTIVO                                       */
+/*==============================================================*/
+CREATE TABLE PERIODO_LECTIVO
+(
+   COD_PERIODO_LECTIVO  INT NOT NULL AUTO_INCREMENT,
+   ESTADO               VARCHAR(3) NOT NULL,
+   FECHA_INICIO         DATE NOT NULL,
+   FECHA_FIN            DATE,
+   PRIMARY KEY (COD_PERIODO_LECTIVO)
+);
+
+/*==============================================================*/
+/* Table: PERSONA                                               */
+/*==============================================================*/
+CREATE TABLE PERSONA
+(
+   COD_PERSONA          INT NOT NULL AUTO_INCREMENT,
+   COD_PERSONA_REPRESENTANTE INT,
+   CEDULA               VARCHAR(10) NOT NULL,
+   APELLIDO             VARCHAR(50) NOT NULL,
+   NOMBRE               VARCHAR(50) NOT NULL,
+   DIRECCION            VARCHAR(200) NOT NULL,
+   TELEFONO             VARCHAR(15),
+   FECHA_NACIMIENTO     DATE NOT NULL,
+   GENERO               VARCHAR(3) NOT NULL,
+   CORREO               VARCHAR(128),
+   CORREO_PERSONAL      VARCHAR(128) NOT NULL,
+   PRIMARY KEY (COD_PERSONA)
+);
+
+/*==============================================================*/
+/* Index: IDXU_PERSONA_CEDULA                                   */
+/*==============================================================*/
+CREATE UNIQUE INDEX IDXU_PERSONA_CEDULA ON PERSONA
+(
+   CEDULA
+);
+
+/*==============================================================*/
+/* Table: REGLA_PERIODO                                         */
+/*==============================================================*/
+CREATE TABLE REGLA_PERIODO
+(
+   COD_REGLA_PERIODO    INT NOT NULL AUTO_INCREMENT,
+   COD_PERIODO_LECTIVO  INT NOT NULL,
+   TIPO                 VARCHAR(3),
+   NOMBRE_REGLA         VARCHAR(100),
+   VALOR                VARCHAR(100),
+   PRIMARY KEY (COD_REGLA_PERIODO)
+);
+
+/*==============================================================*/
+/* Table: ROL                                                   */
+/*==============================================================*/
+CREATE TABLE ROL
+(
+   COD_ROL              INT NOT NULL AUTO_INCREMENT,
+   NOMBRE               VARCHAR(100) NOT NULL,
+   PRIMARY KEY (COD_ROL)
+);
+
+/*==============================================================*/
+/* Table: ROL_USUARIO                                           */
+/*==============================================================*/
+CREATE TABLE ROL_USUARIO
+(
+   COD_ROL              INT NOT NULL,
+   COD_USUARIO          INT NOT NULL,
+   ESTADO               VARCHAR(3) NOT NULL,
+   PRIMARY KEY (COD_ROL, COD_USUARIO)
+);
+
+/*==============================================================*/
+/* Table: SEDE                                                  */
+/*==============================================================*/
+CREATE TABLE SEDE
+(
+   COD_SEDE             INT NOT NULL AUTO_INCREMENT,
+   NOMBRE               VARCHAR(100),
+   DIRECCION            VARCHAR(200),
+   TELEFONO             VARCHAR(15),
+   CODIGO_POSTAL        VARCHAR(6),
+   PRIMARY KEY (COD_SEDE)
+);
+
+/*==============================================================*/
+/* Table: TAREA_ASIGNATURA                                      */
+/*==============================================================*/
+CREATE TABLE TAREA_ASIGNATURA
+(
+   COD_TAREA           INT NOT NULL,
+   COD_ASIGNATURA       INT NOT NULL,
+   COD_NIVEL_EDUCATIVO  INT NOT NULL,
+   COD_PERIODO_LECTIVO  INT NOT NULL,
+   COD_DOCENTE          INT NOT NULL,
+   COD_PARALELO         INT NOT NULL,
+   DETALLE_TAREA        VARCHAR(200),
+   PRIMARY KEY (COD_TAREA)
+);
+
+/*==============================================================*/
+/* Table: TIPO_PERSONA                                          */
+/*==============================================================*/
+CREATE TABLE TIPO_PERSONA
+(
+   COD_TIPO_PERSONA     INT NOT NULL AUTO_INCREMENT,
+   DESCRIPCION          VARCHAR(100) NOT NULL,
+   PRIMARY KEY (COD_TIPO_PERSONA)
+);
+
+/*==============================================================*/
+/* Table: TIPO_PERSONA_PERSONA                                  */
+/*==============================================================*/
+CREATE TABLE TIPO_PERSONA_PERSONA
+(
+   COD_TIPO_PERSONA     INT NOT NULL,
+   COD_PERSONA          INT NOT NULL,
+   ESTADO               VARCHAR(3) NOT NULL DEFAULT 'ACT',
+   FECHA_INICIO         DATE NOT NULL,
+   FECH_FIN             DATE,
+   PRIMARY KEY (COD_TIPO_PERSONA, COD_PERSONA)
+);
+
+/*==============================================================*/
+/* Table: USUARIO                                               */
+/*==============================================================*/
+CREATE TABLE USUARIO
+(
+   COD_USUARIO          INT NOT NULL AUTO_INCREMENT,
+   COD_PERSONA          INT NOT NULL,
+   NOMBRE_USUARIO       VARCHAR(32) NOT NULL,
+   CLAVE                VARCHAR(64) NOT NULL,
+   ESTADO               VARCHAR(3) NOT NULL DEFAULT 'ACT',
+   ULT_FECHA_INGRESO    DATETIME,
+   INTENTOS_FALLIDOS    NUMERIC(2) NOT NULL DEFAULT 0,
+   PRIMARY KEY (COD_USUARIO)
+);
+
+/*==============================================================*/
+/* Index: IDXU_USUARIO_NOMBREUSUARIO                            */
+/*==============================================================*/
+CREATE INDEX IDXU_USUARIO_NOMBREUSUARIO ON USUARIO
+(
+   NOMBRE_USUARIO
+);
+
+ALTER TABLE ALUMNO_ASIGNATURA_PERIODO ADD CONSTRAINT FK_ALU_ASIG_PER_A_ASIG_PER FOREIGN KEY (COD_ASIG_PERIODO, COD_ASIGNATURA, COD_NIVEL_EDUCATIVO, COD_PERIODO_LECTIVO, COD_DOCENTE, COD_PARALELO)
+      REFERENCES ASIGNATURA_PERIODO (COD_ASIG_PERIODO, COD_ASIGNATURA, COD_NIVEL_EDUCATIVO, COD_PERIODO_LECTIVO, COD_DOCENTE, COD_PARALELO) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE ALUMNO_ASIGNATURA_PERIODO ADD CONSTRAINT FK_ASIG_PER_A_MATRICULA_PER FOREIGN KEY (COD_ALUMNO, COD_PERIODO_LECTIVO, COD_NIVEL_EDUCATIVO)
+      REFERENCES MATRICULA_PERIODO (COD_ALUMNO, COD_PERIODO_LECTIVO, COD_NIVEL_EDUCATIVO) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE ASIGNATURA ADD CONSTRAINT FK_ASIGNATURA_A_NIVELEDUCATIVO FOREIGN KEY (COD_NIVEL_EDUCATIVO)
+      REFERENCES NIVEL_EDUCATIVO (COD_NIVEL_EDUCATIVO) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE ASIGNATURA_PERIODO ADD CONSTRAINT FK_ASIGNATURA_PERIODO_A_ASIGNATURA FOREIGN KEY (COD_ASIGNATURA, COD_NIVEL_EDUCATIVO)
+      REFERENCES ASIGNATURA (COD_ASIGNATURA, COD_NIVEL_EDUCATIVO) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE ASIGNATURA_PERIODO ADD CONSTRAINT FK_ASIGNATURA_PERIODO_A_PARALELO FOREIGN KEY (COD_PARALELO)
+      REFERENCES PARALELO (COD_PARALELO) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE ASIGNATURA_PERIODO ADD CONSTRAINT FK_ASIGNATURA_PERIODO_A_PERLECTIVO FOREIGN KEY (COD_PERIODO_LECTIVO)
+      REFERENCES PERIODO_LECTIVO (COD_PERIODO_LECTIVO) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE ASIGNATURA_PERIODO ADD CONSTRAINT FK_ASIGNATURA_PERIODO_A_PERSONA FOREIGN KEY (COD_DOCENTE)
+      REFERENCES PERSONA (COD_PERSONA) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE ASIGNATURA_PERIODO ADD CONSTRAINT FK_ASIGPERIODO_A_AULA FOREIGN KEY (COD_AULA)
+      REFERENCES AULA (COD_AULA) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE ASISTENCIA_PERIODO ADD CONSTRAINT FK_ASISTENCIA_PERIODO_A_MATPERIODO FOREIGN KEY (COD_ALUMNO, COD_PERIODO_LECTIVO, COD_NIVEL_EDUCATIVO)
+      REFERENCES MATRICULA_PERIODO (COD_ALUMNO, COD_PERIODO_LECTIVO, COD_NIVEL_EDUCATIVO) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE AULA ADD CONSTRAINT FK_AULA_A_EDIFICIO FOREIGN KEY (COD_EDIFICIO)
+      REFERENCES EDIFICIO (COD_EDIFICIO) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE CALIFICACION_PRUEBA_ASPIRANTE ADD CONSTRAINT FK_CAL_PRU_ASPIRANTE_A_ASPIRANTE FOREIGN KEY (COD_ASPIRANTE)
+      REFERENCES ASPIRANTE (COD_ASPIRANTE) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE CALIFICACION_PRUEBA_ASPIRANTE ADD CONSTRAINT FK_CAL_PRU_ASPIRANTE_A_NIVELEDUCATIVO FOREIGN KEY (COD_NIVEL_EDUCATIVO)
+      REFERENCES NIVEL_EDUCATIVO (COD_NIVEL_EDUCATIVO) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE COMUNICADO_ASIGNATURA ADD CONSTRAINT FK_COMASIGNATURA_A_ASIGNATURAPER FOREIGN KEY (COD_ASIGNATURA, COD_NIVEL_EDUCATIVO, COD_PERIODO_LECTIVO, COD_DOCENTE, COD_PARALELO)
+      REFERENCES ASIGNATURA_PERIODO (COD_ASIGNATURA, COD_NIVEL_EDUCATIVO, COD_PERIODO_LECTIVO, COD_DOCENTE, COD_PARALELO) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE CRONOGRAMA_PERIODO ADD CONSTRAINT FK_CRONOGRAMA_A_PERIODO FOREIGN KEY (COD_PERIODO_LECTIVO)
+      REFERENCES PERIODO_LECTIVO (COD_PERIODO_LECTIVO) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE EDIFICIO ADD CONSTRAINT FK_EDIFICIO_A_SEDE FOREIGN KEY (COD_SEDE)
+      REFERENCES SEDE (COD_SEDE) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE MATRICULA_PERIODO ADD CONSTRAINT FK_MATPERIODO_A_NIVELEDUCATIVO FOREIGN KEY (COD_NIVEL_EDUCATIVO)
+      REFERENCES NIVEL_EDUCATIVO (COD_NIVEL_EDUCATIVO) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE MATRICULA_PERIODO ADD CONSTRAINT FK_MATPERIODO_A_PERIODOLECTIVO FOREIGN KEY (COD_PERIODO_LECTIVO)
+      REFERENCES PERIODO_LECTIVO (COD_PERIODO_LECTIVO) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE MATRICULA_PERIODO ADD CONSTRAINT FK_MATPERIODO_A_PERSONA FOREIGN KEY (COD_ALUMNO)
+      REFERENCES PERSONA (COD_PERSONA) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE PARALELO ADD CONSTRAINT FK_PARALELO_A_NIVELEDUCATIVO FOREIGN KEY (COD_NIVEL_EDUCATIVO)
+      REFERENCES NIVEL_EDUCATIVO (COD_NIVEL_EDUCATIVO) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE PERSONA ADD CONSTRAINT FK_PERSONA_A_PERSONA FOREIGN KEY (COD_PERSONA_REPRESENTANTE)
+      REFERENCES PERSONA (COD_PERSONA) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE REGLA_PERIODO ADD CONSTRAINT FK_REGLAPER_A_PERLECTIVO FOREIGN KEY (COD_PERIODO_LECTIVO)
+      REFERENCES PERIODO_LECTIVO (COD_PERIODO_LECTIVO) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE ROL_USUARIO ADD CONSTRAINT FK_ROLUSU_A_ROL FOREIGN KEY (COD_ROL)
+      REFERENCES ROL (COD_ROL) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE ROL_USUARIO ADD CONSTRAINT FK_ROLUSU_A_USUARIO FOREIGN KEY (COD_USUARIO)
+      REFERENCES USUARIO (COD_USUARIO) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE TAREA_ASIGNATURA ADD CONSTRAINT FK_TAR_ASIGNATURA_A_ASIGPERIODO FOREIGN KEY (COD_ASIGNATURA, COD_NIVEL_EDUCATIVO, COD_PERIODO_LECTIVO, COD_DOCENTE, COD_PARALELO)
+      REFERENCES ASIGNATURA_PERIODO (COD_ASIGNATURA, COD_NIVEL_EDUCATIVO, COD_PERIODO_LECTIVO, COD_DOCENTE, COD_PARALELO) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE TIPO_PERSONA_PERSONA ADD CONSTRAINT FK_TIPOPERPER_A_TIPOPER FOREIGN KEY (COD_TIPO_PERSONA)
+      REFERENCES TIPO_PERSONA (COD_TIPO_PERSONA) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE TIPO_PERSONA_PERSONA ADD CONSTRAINT FK_TIPOPER_A_PERSONA FOREIGN KEY (COD_PERSONA)
+      REFERENCES PERSONA (COD_PERSONA) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE USUARIO ADD CONSTRAINT FK_USUARIO_A_PERSONA FOREIGN KEY (COD_PERSONA)
+      REFERENCES PERSONA (COD_PERSONA) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
