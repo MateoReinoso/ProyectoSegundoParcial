@@ -52,30 +52,32 @@ if(!empty($_SESSION['active']))
 	<meta name="viewport"
 		content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<link rel="stylesheet" href="../../css/main.css">
+	<link rel="stylesheet" href="../../css/style.css">
 </head>
 
 <body class="cover" style="background-image: url(./assets/gallery/7.jpg);">
-	<form action="home.html" method="post" autocomplete="off" class="full-box logInForm">
+	<form action="" method="post" autocomplete="off" class="full-box logInForm">
 		<p class="text-center text-muted"><i class="zmdi zmdi-account-circle zmdi-hc-5x"></i></p>
 		<p class="text-center text-muted text-uppercase">Inicia sesión con tu cuenta</p>
 		<div class="form-group label-floating">
-			<label class="control-label" for="UserEmail">E-mail</label>
-			<input class="form-control" id="UserEmail" type="email">
-			<p class="help-block">Escribe tu E-mail</p>
+			<label class="control-label" for="usuario">Usuario</label>
+			<input class="form-control" id="usuario" type="text">
+			<p class="help-block">Escribe tu Usuario</p>
 		</div>
 		<div class="form-group label-floating">
-			<label class="control-label" for="UserPass">Contraseña</label>
-			<input class="form-control" id="UserPass" type="text">
+			<label class="control-label" for="clave">Contraseña</label>
+			<input class="form-control" id="clave" type="text">
 			<p class="help-block">Escribe tu contraseña</p>
 		</div>
 		<div class="form-group text-center">
 			<input type="submit" value="Iniciar sesión" class="btn btn-raised btn-danger">
 		</div>
+		<div class="alert"><?php echo isset($alert) ? $alert : '';?></div>
 		<div class="form-group text-center">
-			<a href="recoverpassword.html">Recuperar Contraseña</a>
+			<a href="#">Recuperar Contraseña</a>
 		</div>
 		<div class="form-group text-center">
-			<a href="index.html">Unidad Educativa Colegio San Jose de Olmedo</a>
+			<a href="../../index.php">Unidad Educativa Colegio San Jose de Olmedo</a>
 		</div>
 	</form>
 	<script src="./js/jquery-3.1.1.min.js"></script>
