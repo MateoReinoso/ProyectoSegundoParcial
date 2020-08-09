@@ -70,7 +70,7 @@ if(!empty($_SESSION['active']))
 			<p class="help-block">Escribe tu contraseña</p>
 		</div>
 		<div class="form-group text-center">
-			<input type="submit" value="Iniciar sesión" class="btn btn-raised btn-danger">
+			<input href="../admin/index.php" type="submit" value="Iniciar sesión" class="btn btn-raised btn-danger">
 		</div>
 		<div class="alert"><?php echo isset($alert) ? $alert : '';?></div>
 		<div class="form-group text-center">
