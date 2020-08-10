@@ -37,7 +37,7 @@
 					</a>
 					<ul class="list-unstyled full-box">
 						<li>
-							<a href="period.html"><i class="zmdi zmdi-timer zmdi-hc-fw"></i> Periodos</a>
+							<a href="period.php"><i class="zmdi zmdi-timer zmdi-hc-fw"></i> Periodos</a>
 						</li>
 						<li>
 							<a href="matricula.php"><i class="zmdi zmdi-font zmdi-hc-fw"></i> Matriculas</a>
