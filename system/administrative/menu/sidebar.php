@@ -40,6 +40,9 @@
 							<a href="period.html"><i class="zmdi zmdi-timer zmdi-hc-fw"></i> Periodos</a>
 						</li>
 						<li>
+							<a href="matricula.php"><i class="zmdi zmdi-font zmdi-hc-fw"></i> Matriculas</a>
+						</li>
+						<li>
 							<a href="subject.html"><i class="zmdi zmdi-book zmdi-hc-fw"></i> Asignaturas</a>
 						</li>
 						<li>
