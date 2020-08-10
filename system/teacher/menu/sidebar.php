@@ -31,77 +31,7 @@
 						<i class="zmdi zmdi-view-dashboard zmdi-hc-fw"></i> Panel de Administración
 					</a>
 				</li>
-				<li>
-					<a href="#!" class="btn-sideBar-SubMenu">
-						<i class="zmdi zmdi-case zmdi-hc-fw"></i> Administración <i class="zmdi zmdi-caret-down pull-right"></i>
-					</a>
-					<ul class="list-unstyled full-box">
-						<li>
-							<a href="period.html"><i class="zmdi zmdi-timer zmdi-hc-fw"></i> Periodos</a>
-						</li>
-						<li>
-							<a href="subject.html"><i class="zmdi zmdi-book zmdi-hc-fw"></i> Asignaturas</a>
-						</li>
-						<li>
-							<a href="section.html"><i class="zmdi zmdi-graduation-cap zmdi-hc-fw"></i> Cursos</a>
-						</li>
-						<li>
-							<a href="building.html"><i class="zmdi zmdi-balance zmdi-hc-fw"></i> Edificios</a>
-						</li>
-						<li>
-							<a href="salon.html"><i class="zmdi zmdi-font zmdi-hc-fw"></i> Aulas</a>
-						</li>
-						<li>
-							<a href="teacher_subject.html"><i class="zmdi zmdi-case zmdi-hc-fw"></i> Registro de asignaturas por docente</a>
-						</li>
-					</ul>
-				</li>
-				<li>
-					<a href="#!" class="btn-sideBar-SubMenu">
-						<i class="zmdi zmdi-account-add zmdi-hc-fw"></i> Usuarios <i class="zmdi zmdi-caret-down pull-right"></i>
-					</a>
-					<ul class="list-unstyled full-box">
-						<li>
-							<a href="admin.html"><i class="zmdi zmdi-account zmdi-hc-fw"></i> Administrador</a>
-						</li>
-						<li>
-							<a href="applicant.html"><i class="zmdi zmdi-account-add zmdi-hc-fw"></i> Aspirante</a>
-						</li>
-						<li>
-							<a href="teacher.html"><i class="zmdi zmdi-male-alt zmdi-hc-fw"></i> Docente</a>
-						</li>
-						<li>
-							<a href="student.html"><i class="zmdi zmdi-face zmdi-hc-fw"></i> Estudiante</a>
-						</li>
-						<li>
-							<a href="representative.html"><i class="zmdi zmdi-male-female zmdi-hc-fw"></i> Representante</a>
-						</li>
-						
-					</ul>
-				</li>
-				<li>
-					<a href="#!" class="btn-sideBar-SubMenu">
-						<i class="zmdi zmdi-card zmdi-hc-fw"></i> Pagos <i class="zmdi zmdi-caret-down pull-right"></i>
-					</a>
-					<ul class="list-unstyled full-box">
-						<li>
-							<a href="registration.html"><i class="zmdi zmdi-money-box zmdi-hc-fw"></i> Registro</a>
-						</li>
-						<li>
-							<a href="payments.html"><i class="zmdi zmdi-money zmdi-hc-fw"></i> Pagos</a>
-						</li>
-					</ul>
-				</li>
-				<li>
-					<a href="#!" class="btn-sideBar-SubMenu">
-						<i class="zmdi zmdi-shield-security zmdi-hc-fw"></i> Ajustes <i class="zmdi zmdi-caret-down pull-right"></i>
-					</a>
-					<ul class="list-unstyled full-box">
-						<li>
-							<a href="school.html"><i class="zmdi zmdi-balance zmdi-hc-fw"></i> Datos de la institución</a>
-						</li>
-					</ul>
-				</li>
+				
 				<li>
 					<a href="#!" class="btn-sideBar-SubMenu">
 						<i class="zmdi zmdi-graduation-cap zmdi-hc-fw"></i> Escolar <i class="zmdi zmdi-caret-down pull-right"></i>
@@ -114,7 +44,7 @@
 							<a href="release.html"><i class="zmdi zmdi-card zmdi-hc-fw"></i> Comunicados</a>
 						</li>
 						<li>
-							<a href="score.html"><i class="zmdi zmdi-font zmdi-hc-fw"></i> Calificaciones</a>
+							<a href="homework.php"><i class="zmdi zmdi-font zmdi-hc-fw"></i> Asignación de Tareas</a>
 						</li>
 						<li>
 							<a href="assistance.html"><i class="zmdi zmdi-alert-triangle zmdi-hc-fw"></i> Faltas</a>
