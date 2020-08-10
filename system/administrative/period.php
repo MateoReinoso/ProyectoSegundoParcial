@@ -17,8 +17,7 @@ if (isset($_POST["startDate"])&&isset($_POST["endDate"])&&$_POST["accion"]=="Agr
 {
     echo 'Fecha inicio'.$_POST["startDate"]." Fecha fin".$_POST["endDate"];
 insertPeriod($codigo+101,$_POST["startDate"],$_POST["endDate"]);
-    
-    
+deactivatePeriod($codigo);  
 }
 else if (isset($_POST["nombre"])&&isset($_POST["codigo"])&&$_POST["accion"]=="Modificar"){
 
