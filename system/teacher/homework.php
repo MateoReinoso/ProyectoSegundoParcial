@@ -1,10 +1,13 @@
 <?php
+
+    include '../sql_connection/conexion.php';
+
     if (!empty($_POST)) {
         $alert='';
         if (empty($_POST['COD_NIVEL_EDUCATIVO']) || empty($_POST['COD_TAREA']) || empty($_POST['COD_ASIGNATURA']) || empty($_POST['COD_PERIODO_LECTIVO']) || empty($_POST['COD_DOCENTE']) || empty($_POST['COD_PARALELO']) || empty($_POST['DETALLE_TAREA'])) {
             $alert ='<p class="msg_error">Todos los campos son obligatorios</p>';
         }else {
-            include '../sql_connection/conexion.php';
+            
 
             $niveleducativo = $_POST['COD_NIVEL_EDUCATIVO'];
             $tarea = $_POST['COD_TAREA'];
@@ -56,17 +59,38 @@
             <div class="form_register">
                 <h1>Asignación de Tareas</h1>
                 <hr>
-                <div class="alert"> <?php echo isset($alert) ? $alert : ''; ?> </div>
-                
+                <!-- <div class="alert"> <?php echo isset($alert) ? $alert : ''; ?> </div> -->
+
                 <form action="" method="post">
                     <label for="COD_NIVEL_EDUCATIVO">Código del Nivel Educativo</label>
                     <input type="text" name="COD_NIVEL_EDUCATIVO" id=COD_NIVEL_EDUCATIVO" placeholder="Nivel Educativo">
                     <label for="COD_TAREA">Código de Tarea</label>
                     <input type="text" name="COD_TAREA" id="COD_TAREA" placeholder="Codigo de Tarea">
-                    <label for="COD_ASIGNATURA">Código de Asignatura</label>
-                    <input type="text" name="COD_ASIGNATURA" id="COD_ASIGNATURA" placeholder="Codigo de Asignatura">
+                    <!-- <label for="COD_ASIGNATURA">Código de Asignatura</label>
+                    <input type="text" name="COD_ASIGNATURA" id="COD_ASIGNATURA" placeholder="Codigo de Asignatura"> -->
+                    <label for="COD_ASIGNATURA">Materia</label>
+
+                    <?php 
+                        $query_materia = mysqli_query($connection, "SELECT COD_ASIGNATURA, NOMBRE FROM asignatura");
+                        $result_materia = mysqli_num_rows($query_materia);                                              
+
+                    ?>
+
+                    <select name="COD_ASIGNATURA" id="COD_ASIGNATURA">
+                        <?php 
+                            if ($result_materia > 0) {
+                                while ($asignatu = mysqli_fetch_array($query_materia)) {
+                                    ?>
+                                    <option value="<?php echo $asignatu["COD_ASIGNATURA"]; ?>"><?php echo $asignatu["NOMBRE"] ?></option>
+                                    <?php
+                                
+                                }
+                            }
+                        ?>
+                    </select>
                     <label for="COD_PERIODO_LECTIVO">Código del Periodo Electivo</label>
-                    <input type="text" name="COD_PERIODO_LECTIVO" id="COD_PERIODO_LECTIVO" placeholder="Periodo Electivo">
+                    <input type="text" name="COD_PERIODO_LECTIVO" id="COD_PERIODO_LECTIVO"
+                        placeholder="Periodo Electivo">
                     <label for="COD_PARALELO">Código del Paralelo</label>
                     <input type="text" name="COD_PARALELO" id="COD_PARALELO" placeholder="Código de Paralelo">
                     <label for="COD_DOCENTE">Código de Docente</label>

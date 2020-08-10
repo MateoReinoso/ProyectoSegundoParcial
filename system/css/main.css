@@ -720,7 +720,7 @@ label{
     font-family: Arial, Helvetica, sans-serif;
     margin: 10px auto 5px auto;
 }
-input{
+input, select{
     display: block;
     width: 100%;
     font-size: 11pt;
