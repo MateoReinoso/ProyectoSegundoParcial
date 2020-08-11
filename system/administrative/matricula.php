@@ -1,3 +1,11 @@
+<?php
+include './Service/periodService.php';
+
+if(isset($_POST["periodo"]))
+{
+    
+}    
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -23,6 +31,20 @@
                             <h4>
                             <?php ?>
                         </h4>
+                        <label for="periodo" class="text-white mb-4">Elija un periodo:</label>
+                        <select id="periodo" name="periodo">
+                        <?php
+                        $result = findPeriod();
+                        while($row = $result->fetch_assoc()) {
+                            $sub1 = substr($row['FECHA_INICIO'], 0, 4);
+                            $sub2 = substr($row['FECHA_FIN'], 0, 4);?>
+                        <option value=<?php echo $row['COD_PERIODO_LECTIVO'];?>  ><?php echo $sub1.'-'.$sub2;?></option>
+                        <?php 
+                        }
+                        ?>
+                        </select>
+                        <input type="submit" name="accion" value="Matricular">
+                        </form>
                         </div>
         </div>
         </div>
