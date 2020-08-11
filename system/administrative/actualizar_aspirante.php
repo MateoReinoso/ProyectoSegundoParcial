@@ -6,7 +6,9 @@ if (!empty($_POST)) {
     if (empty($_POST['cedula']) || empty($_POST['nombre']) || empty($_POST['apellido']) || empty($_POST['direccion']) || empty($_POST['telefono']) || empty($_POST['fecnac']) || empty($_POST['genero']) || empty($_POST['correo']) || empty($_POST['nivel'])) {
         $alert = '<p class="msg_error">Todos los campos son obligatorios</p>';
     } else {
-        //RECOLECTA LOS DATOS DEL FORMULARIO AQUI DEBES ACTUALIZAR, NO LO OLVIDES MMV
+        //RECOLECTA LOS DATOS DEL FORMULARIO
+        $idaspirante = $_GET['id'];
+        $idnivel = $_GET['idn'];
         $cedula = $_POST['cedula'];
         $nombre = $_POST['nombre'];
         $apellido = $_POST['apellido'];
@@ -17,68 +19,54 @@ if (!empty($_POST)) {
         $correo = $_POST['correo'];
         $nivel = $_POST['nivel'];
 
-        $query = mysqli_query($connection, "SELECT * FROM aspirante WHERE cedula='$cedula'");
-        $result = mysqli_fetch_array($query);
+        $query_update_asp = mysqli_query($connection, "UPDATE aspirante 
+        SET CEDULA='$cedula', APELLIDO='$apellido', NOMBRE='$nombre', DIRECCION='$direccion', TELEFONO='$telefono', FECHA_NACIMIENTO='$fecnac', GENERO='$genero', CORREO_PERSONAL='$correo' 
+        WHERE COD_ASPIRANTE=$idaspirante");
 
-        if ($result > 0) {
-            //SI EL USUARIO O EMAIL YA ESTAN REGISTRADOS MUESTRA ERROR
-            $alert = '<p class="msg_error">El usuario ya ha sido inscrito</p>';
+        $query_update_niv = mysqli_query($connection, "UPDATE calificacion_prueba_aspirante
+        SET COD_NIVEL_EDUCATIVO='$nivel'
+        WHERE COD_ASPIRANTE='$idaspirante'");
+        if ($query_update_asp && $query_update_niv) {
+            $alert = '<p class="msg_save">Aspirante actualizdo correctamente</p>';
+            header('Location: gestion_aspirante.php');
         } else {
-            $query_insert_asp = mysqli_query($connection, "INSERT INTO aspirante(CEDULA,APELLIDO,NOMBRE,DIRECCION,TELEFONO,FECHA_NACIMIENTO,GENERO,CORREO_PERSONAL) 
-				values('$cedula','$apellido','$nombre','$direccion','$telefono','$fecnac','$genero','$correo')");
-
-            //OBTENCION DE ID DE ASPIRANTE INGRESADO
-            $query_searchid = mysqli_query($connection, "SELECT * FROM aspirante WHERE cedula='$cedula'");
-            $result_id = mysqli_num_rows($query_searchid);
-            if ($result_id > 0) {
-                $id = mysqli_fetch_array($query_searchid);
-                $id_asp = $id["COD_ASPIRANTE"];
-            }
-            //INGRESO EN TABLA CALF_PRUE_ASP
-            $query_insert_niv = mysqli_query($connection, "INSERT INTO calificacion_prueba_aspirante(COD_NIVEL_EDUCATIVO, COD_ASPIRANTE)
-                values ('$nivel','$id_asp') ");
-
-            if ($query_insert_asp && $query_insert_niv) {
-                $alert = '<p class="msg_save">Aspirante ingresado correctamente</p>';
-            } else {
-                $alert = '<p class="msg_error">Error al ingresar el aspirante</p>';
-            }
+            $alert = '<p class="msg_error">Error al actualizar el aspirante</p>';
+            header('Location: gestion_aspirante.php');
         }
     }
 }
-    //RECUPERACION DE DATOS DEL USUARIO
-    if(empty($_GET['id']) && empty($_GET['idn']))
-    {
-        //EL ID NO DEBE ESTAR VACIO, SI LO ESTA REGRESA A LISTA DE USUARIOS
-        header('Location: gestion_aspirante.php');
-    }
+//RECUPERACION DE DATOS DEL USUARIO
+if (empty($_GET['id']) && empty($_GET['idn'])) {
+    //EL ID NO DEBE ESTAR VACIO, SI LO ESTA REGRESA A LISTA DE USUARIOS
+    header('Location: gestion_aspirante.php');
+}
 
-    $idaspirante=$_GET['id'];
-    $idnivel=$_GET['idn'];   
-    $sql= mysqli_query($connection,"SELECT a.COD_ASPIRANTE, a.CEDULA, a.APELLIDO, (a.NOMBRE) as nombre_asp, 
+$idaspirante = $_GET['id'];
+$idnivel = $_GET['idn'];
+$sql = mysqli_query($connection, "SELECT a.COD_ASPIRANTE, a.CEDULA, a.APELLIDO, (a.NOMBRE) as nombre_asp, 
     a.DIRECCION, a.TELEFONO, a.FECHA_NACIMIENTO, a.GENERO, a.CORREO_PERSONAL, cpa.CALIFICACION, cpa.ESTADO 
      from aspirante a 
     INNER JOIN calificacion_prueba_aspirante cpa on a.COD_ASPIRANTE=cpa.COD_ASPIRANTE
     INNER JOIN nivel_educativo ne on ne.COD_NIVEL_EDUCATIVO=cpa.COD_NIVEL_EDUCATIVO 
     WHERE ne.COD_NIVEL_EDUCATIVO='$idnivel' AND a.COD_ASPIRANTE='$idaspirante'");
 
-    $result_sql = mysqli_num_rows($sql);
-    if($result_sql==0)
-    {
-        header('Location: lista_usuarios.php');
-    }else{
-        $option = '';
-        while($data = mysqli_fetch_array($sql)){
-            $cedula = $data['CEDULA'];
-            $apellido = $data['APELLIDO'];
-            $nombre = $data['nombre_asp'];
-            $direccion=$data['DIRECCION'];
-            $telefono = $data['TELEFONO'];
-            $fec_nac=$data['FECHA_NACIMIENTO'];
-            $genero=$data['GENERO'];
-            $correo=$data['CORREO_PERSONAL'];
-        }
+$result_sql = mysqli_num_rows($sql);
+if ($result_sql == 0) {
+    header('Location: gestion_aspirante.php');
+} else {
+    $option = '';
+    while ($data = mysqli_fetch_array($sql)) {
+
+        $cedula = $data['CEDULA'];
+        $apellido = $data['APELLIDO'];
+        $nombre = $data['nombre_asp'];
+        $direccion = $data['DIRECCION'];
+        $telefono = $data['TELEFONO'];
+        $fec_nac = $data['FECHA_NACIMIENTO'];
+        $genero = $data['GENERO'];
+        $correo = $data['CORREO_PERSONAL'];
     }
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -97,7 +85,7 @@ if (!empty($_POST)) {
         <!-- A PARTIR DE AQUI CREAR CONTENIDO DE LA PAGINA-->
         <div class="container-fluid">
             <div class="page-header">
-                <h1 class="text-titles">Aspirantes<small>  Actualizar aspirante</small></h1>
+                <h1 class="text-titles">Aspirantes<small> Actualizar aspirante</small></h1>
             </div>
             <!-- TODO LO QUE CREEN DEBE IR SEPARADO DENTRO DE ESTE CONTENEDOR-->
             <form action="" method="post" class="aspireForm">
@@ -149,18 +137,18 @@ if (!empty($_POST)) {
                     $query_nivel = mysqli_query($connection, "SELECT * FROM nivel_educativo");
                     $result_nivel = mysqli_num_rows($query_nivel);
                     ?>
-                    <select name="nivel" name="id" id="nivel" style="color:black; align-content:center; width:400px">
+                    <select name="nivel" id="nivel" style="color:black; align-content:center; width:400px">
                         <?php
                         //LISTA LOS NIVELES DESDE LA DB
                         if ($result_nivel > 0) {
-                            
+
                             while ($nivel = mysqli_fetch_array($query_nivel)) {
-                                if($nivel["NIVEL"] =='PRI'){
-                                    $ne='Primaria';
-                                }else if($nivel["NIVEL"] =='SEC'){
-                                    $ne='Secundaria';
-                                }else if($nivel["NIVEL"] =='BAC'){
-                                    $ne='Bachillerato';
+                                if ($nivel["NIVEL"] == 'PRI') {
+                                    $ne = 'Primaria';
+                                } else if ($nivel["NIVEL"] == 'SEC') {
+                                    $ne = 'Secundaria';
+                                } else if ($nivel["NIVEL"] == 'BAC') {
+                                    $ne = 'Bachillerato';
                                 }
                         ?>
                                 <option value="<?php echo $nivel["COD_NIVEL_EDUCATIVO"]; ?>"><?php echo $nivel["NOMBRE"] . "-" . $ne ?></option>
@@ -173,7 +161,7 @@ if (!empty($_POST)) {
                     </select>
                 </div>
                 <div class="form-group text-center">
-                    <input type="submit" value="Guardar" class="btn btn-raised btn-danger">
+                    <input type="submit" value="Actualizar" class="btn btn-raised btn-danger">
                 </div>
             </form>
         </div>

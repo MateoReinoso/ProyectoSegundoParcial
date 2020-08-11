@@ -103,7 +103,7 @@ include "../sql_connection/conexion.php";
                             <td><?php if($data["ESTADO"]=='APR') {echo 'Aprobado';} else if($data["ESTADO"]=='REP'){ echo "Reprobado";} else if($data["ESTADO"]==null){echo "Pendiente";} ?></td>
                             <td><a href="actualizar_aspirante.php?id=<?php echo $data["COD_ASPIRANTE"]."&idn=".$codnivel_edu ?>" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i>Editar</a></td>
                             <td><a href="notas_aspirantes.php?id=<?php echo $data["COD_ASPIRANTE"]."&idn=".$codnivel_edu ?>" class="btn btn-primary btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i>Ingresar Nota</a></td>
-                            <td><a href="editar_funcionalidad.php?id=<?php echo $data["COD_ASPIRANTE"]."&idn=".$codnivel_edu ?>" class="btn btn-danger btn-raised btn-xs"><i class="zmdi zmdi-delete"></i>Eliminar</a></td>
+                            <td><a href="eliminar_aspirante.php?id=<?php echo $data["COD_ASPIRANTE"]."&idn=".$codnivel_edu ?>" class="btn btn-danger btn-raised btn-xs"><i class="zmdi zmdi-delete"></i>Eliminar</a></td>
                         </tr>
             <?php
                       }

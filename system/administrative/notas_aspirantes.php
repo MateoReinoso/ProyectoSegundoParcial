@@ -11,7 +11,7 @@ if (!empty($_POST)) {
         $idnivel=$_GET['idn'];
         $calificacion = $_POST['calificacion'];
 
-        if($calificacion>6)
+        if($calificacion>=7)
         {
             $query = mysqli_query($connection, "UPDATE calificacion_prueba_aspirante
             SET CALIFICACION='$calificacion', ESTADO='APR' 

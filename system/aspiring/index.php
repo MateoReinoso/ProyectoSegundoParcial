@@ -68,7 +68,7 @@
 <body class="cover" style="background-image: url(../assets/img/background.jpg);">
     <img src="../assets/img/logo.png" alt="Logo" class="hidden-xs hidden-sm" style="align-content:center">
     <div class="alert"><?php echo isset($alert) ? $alert:''; ?></div>
-	<form action="" method="post" class="aspireForm">
+	<form action="" method="post" class="logInForm">
     <img src="../assets/img/logo2.png" alt="Logo" class="hidden-xs hidden-sm">		
     <p class="text-center text-muted text-uppercase">Resgistra tus datos para completar tu inscripcion</p>
 		<div class="form-group label-floating">
@@ -143,7 +143,6 @@
 			<a href="../../index.php">Unidad Educativa Colegio San Jose de Olmedo</a>
         </div>
     </form>
-   
 	<script src="./js/jquery-3.1.1.min.js"></script>
 	<script src="./js/bootstrap.min.js"></script>
 	<script src="./js/material.min.js"></script>
