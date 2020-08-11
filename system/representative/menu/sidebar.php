@@ -19,7 +19,7 @@
 					</li>
 					<li>
 						<a href="#!" class="btn-exit-system">
-							<i class="zmdi zmdi-power"></i>
+							<i class="zmdi zmdi-power">  Cerrar Sesión</i>
 						</a>
 					</li>
 				</ul>
