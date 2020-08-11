@@ -60,27 +60,9 @@
 					</ul>
 				</li>
 				<li>
-					<a href="#!">
-						<i class="zmdi zmdi-account-add zmdi-hc-fw"></i> Usuarios <i class="zmdi zmdi-caret-down pull-right"></i>
+					<a href="gestion_persona.php">
+						<i class="zmdi zmdi-account zmdi-hc-fw"></i> Gestión de Usuarios
 					</a>
-					<ul class="list-unstyled full-box">
-						<li>
-							<a href="admin.html"><i class="zmdi zmdi-account zmdi-hc-fw"></i> Administrador</a>
-						</li>
-						<li>
-							<a href="applicant.html"><i class="zmdi zmdi-account-add zmdi-hc-fw"></i> Aspirante</a>
-						</li>
-						<li>
-							<a href="teacher.html"><i class="zmdi zmdi-male-alt zmdi-hc-fw"></i> Docente</a>
-						</li>
-						<li>
-							<a href="student.html"><i class="zmdi zmdi-face zmdi-hc-fw"></i> Estudiante</a>
-						</li>
-						<li>
-							<a href="representative.html"><i class="zmdi zmdi-male-female zmdi-hc-fw"></i> Representante</a>
-						</li>
-						
-					</ul>
 				</li>
 				<li>
 					<a href="gestion_aspirante.php">

@@ -48,7 +48,7 @@ if(!empty($_SESSION['active']))
                 $_SESSION['active']=true;
                 $_SESSION['user']=$data['NOMBRE_USUARIO'];
 				$_SESSION['rol']=$data['NOMBRE'];
-				$querydate = mysqli_query($connection,"INSERT INTO usuario(ULT_FECHA_INGRESO) values ('$last_session') WHERE usuario = '$user'");
+				$querydate = mysqli_query($connection,"UPDATE usuario SET ULT_FECHA_INGRESO='$last_session' WHERE NOMBRE_USUARIO = '$user'");
 
 				if($_SESSION['rol']== 'Administrador'){
 					header('location: ../admin/');
