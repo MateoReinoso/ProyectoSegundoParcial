@@ -1,5 +1,5 @@
 <?php
-include './Service/periodService.php';
+include './Service/matriculaService.php';
 
                             
 $result = findPeriod();
@@ -18,32 +18,6 @@ if (isset($_POST["startDate"])&&isset($_POST["endDate"])&&$_POST["accion"]=="Agr
     echo 'Fecha inicio'.$_POST["startDate"]." Fecha fin".$_POST["endDate"];
 insertPeriod($codigo+101,$_POST["startDate"],$_POST["endDate"]);
 deactivatePeriod($codigo);  
-}
-else if (isset($_POST["nombre"])&&isset($_POST["codigo"])&&$_POST["accion"]=="Modificar"){
-
-    modifyFuncionalidad($_POST["nombre"],$_POST["codigo"],$_POST["descripcion"],$_POST["url"],$_POST["codModulo"]);
-}
-if(isset($_GET["update"]))
-{
-    $result = findFuncionalidadByCod($_GET["update"]);
-    if ($result->num_rows > 0) {
-        $row1 = $result->fetch_assoc();
-        $aux = findModuloByCod($row1["COD_MODULO"]);
-        $rowAux=$aux->fetch_assoc();
-        $nombreModulo=$rowAux["NOMBRE"];
-        $nombre=$row1["NOMBRE"];
-        $codigo=$row1["COD_FUNCIONALIDAD"];
-        $codModulo=$row1["COD_MODULO"];
-        $descripcion=$row1["DESCRIPCION"];
-        $url=$row1["URL_PRINCIPAL"];
-        $accion="Modificar";
-        $hidden="";
-    }
-}
-if(isset($_GET["codModulo"])&&isset($_GET["codRol"]))
-{
-    echo 'Eliminando '.$_GET["codModulo"].' y '.$_GET["codRol"];
-    deleteRolModulo($_GET["codModulo"],$_GET["codRol"]);
 }
 
 ?>
