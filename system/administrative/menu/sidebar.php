@@ -84,6 +84,20 @@
 				</li>
 				<li>
 					<a href="#!" class="btn-sideBar-SubMenu">
+						<i class="zmdi zmdi-account-add zmdi-hc-fw"></i> Aspirantes <i class="zmdi zmdi-caret-down pull-right"></i>
+					</a>
+					<ul class="list-unstyled full-box">
+						<li>
+							<a href="registro_aspirantes.php"><i class="zmdi zmdi-account zmdi-hc-fw"></i>Registrar aspirante</a>
+						</li>
+						<li>
+							<a href="notas_aspirantes.php"><i class="zmdi zmdi-account-add zmdi-hc-fw"></i>Asignar nota a aspirante</a>
+						</li>
+						
+					</ul>
+				</li>
+				<li>
+					<a href="#!" class="btn-sideBar-SubMenu">
 						<i class="zmdi zmdi-card zmdi-hc-fw"></i> Pagos <i class="zmdi zmdi-caret-down pull-right"></i>
 					</a>
 					<ul class="list-unstyled full-box">

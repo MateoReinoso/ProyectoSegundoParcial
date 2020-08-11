@@ -6,4 +6,5 @@
     $db = 'br1he3ydbvwczq2gziyd';
 
     $connection = @mysqli_connect($host,$user,$password,$db);
+
 ?>
