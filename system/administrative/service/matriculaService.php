@@ -1,7 +1,7 @@
 <?php   
 include 'conection.php';
 
-
+//Matricula
 function insertMatricula($codigoPeriodo,$codAlumno,$codNivel)
 {
     $conection = getConection();
@@ -15,21 +15,52 @@ function findMatricula()
     $conection = getConection();
     return $conection->query("SELECT * FROM matricula_periodo m,periodo_lectivo p WHERE p.ESTADO='ACT' AND m.COD_PERIODO_LECTIVO=p.COD_PERIODO_LECTIVO");;
 }
+function findNivel()
+{
+    $conection = getConection();
+    return $conection->query("SELECT * FROM nivel_educativo ");;
+}
+function findNivelById($codigo)
+{
+    $conection = getConection();
+    return $conection->query("SELECT * FROM nivel_educativo where COD_NIVEL_EDUCATIVO=".$codigo);;
+}
+function findNivelAlumnoById($codigo)
+{
+    $conection = getConection();
+    return $conection->query("SELECT * FROM persona where COD_PERSONA=".$codigo);;
+}
 function findMatriculaPeriodo($codPeriodo)
 {
     $conection = getConection();
     return $conection->query("SELECT * FROM matricula_periodo WHERE PROMEDIO_FINAL>=7 AND COD_NIVEL_EDUCATIVO<13 AND COD_PERIODO_LECTIVO=".$codPeriodo);;
 }
+function findMatriculaNivel($codNivel)
+{
+    $conection = getConection();
+    return $conection->query("SELECT * FROM matricula_periodo mp, periodo_lectivo p WHERE p.ESTADO='ACT'  AND mp.COD_PERIODO_LECTIVO=p.COD_PERIODO_LECTIVO AND mp.COD_NIVEL_EDUCATIVO=".$codNivel);;
+}
 
 function matricular($codigoPeriodo)
 {
-    $codigo= $codigoPeriodo-101;
+    $codigo= $codigoPeriodo-101;//Codigo del periodo previo y asi encuentra quienes aprobaron
     $result = findMatriculaPeriodo($codigo);
     while($row = $result->fetch_assoc()) {
         insertMatricula($codigoPeriodo,$row["COD_ALUMNO"],$row["COD_NIVEL_EDUCATIVO"]+1);
     }
     
 }
+
+function matriculas($codigoNivel)
+{
+    $result = findMatriculaNivel($codigoNivel);
+    while($row = $result->fetch_assoc()) {
+        insertMatricula($codigoPeriodo,$row["COD_ALUMNO"],$row["COD_NIVEL_EDUCATIVO"]+1);
+    }
+    
+}
+
+
 
 // Servicios periodos
 
@@ -71,14 +102,23 @@ function saveCandidate($cedula,$apellido,$nombre,$direccion,$telefono,$fechaNaci
     $stmt->execute();
     $stmt->close();
 }
-function incribeCandidates()
+function incribeCandidates($codigoPeriodo)
 {
     $result = findCandidates();
     while($row = $result->fetch_assoc()) {
-        saveCandidate(row["CEDULA"],row["APELLIDO"],row["NOMBRE"],row["DIRECCION"],row["TELEFONO"],row["FECHA_NACIMIENTO"],row["GENERO"],row["CORREO_PERSONAL"]);
+        saveCandidate($row["CEDULA"],$row["APELLIDO"],$row["NOMBRE"],$row["DIRECCION"],$row["TELEFONO"],$row["FECHA_NACIMIENTO"],$row["GENERO"],$row["CORREO_PERSONAL"]);
+        $resultAlumno = findAlumnoByCedula($row["CEDULA"]);
+        $rowAlumno=$resultAlumno->fetch_assoc();
+        insertMatricula($codigoPeriodo,$rowAlumno["COD_PERSONA"],$row["COD_NIVEL_EDUCATIVO"]);
+
     }
+
     
 }
-
+function findAlumnoByCedula($cedula)
+{
+    $conection = getConection();
+    return $conection->query("SELECT * FROM persona where CEDULA=".$cedula);;
+}
 //
 ?>

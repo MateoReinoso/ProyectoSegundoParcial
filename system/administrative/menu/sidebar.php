@@ -43,7 +43,7 @@
 							<a href="matricula.php"><i class="zmdi zmdi-font zmdi-hc-fw"></i> Matriculas</a>
 						</li>
 						<li>
-							<a href="subject.html"><i class="zmdi zmdi-book zmdi-hc-fw"></i> Asignaturas</a>
+							<a href="asignatura.php"><i class="zmdi zmdi-book zmdi-hc-fw"></i> Asignaturas</a>
 						</li>
 						<li>
 							<a href="section.html"><i class="zmdi zmdi-graduation-cap zmdi-hc-fw"></i> Cursos</a>

@@ -15,11 +15,17 @@ $accion="Agregar";
 
 if (isset($_POST["startDate"])&&isset($_POST["endDate"])&&$_POST["accion"]=="Agregar")
 {
-    echo 'Fecha inicio'.$_POST["startDate"]." Fecha fin".$_POST["endDate"];
+    
 insertPeriod($codigo+101,$_POST["startDate"],$_POST["endDate"]);
-deactivatePeriod($codigo);  
+deactivatePeriod($codigo+101);  
 }
-
+$result = findPeriod();
+while($row = $result->fetch_assoc()) {
+    $codigo=$row['COD_PERIODO_LECTIVO'];
+    $fechaInicio= $row['FECHA_INICIO'];
+    $fechaFin=$row['FECHA_FIN'];
+    
+}
 ?>
 
 
