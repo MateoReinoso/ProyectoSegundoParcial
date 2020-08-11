@@ -95,7 +95,7 @@ include "../sql_connection/conexion.php";
                             <td><?php echo $data["ULT_FECHA_INGRESO"] ?></td>
                             <td><a href="actualizar_persona.php?id=<?php echo $data["COD_PERSONA"]."&idr=".$codrol ?>" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i>Editar</a></td>
                             <td><a href="cambiar_contraseña.php?id=<?php echo $data["COD_USUARIO"]."&idr=".$codrol ?>" class="btn btn-primary btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i>Cambiar Contraseña</a></td>
-                            <td><a href="eliminar_persona.php?id=<?php echo $data["COD_PERSONA"]."&idr=".$codrol ?>" class="btn btn-danger btn-raised btn-xs"><i class="zmdi zmdi-delete"></i>Eliminar</a></td>
+                            <td><a href="eliminar_usuario.php?id=<?php echo $data["COD_USUARIO"]."&idr=".$codrol ?>" class="btn btn-danger btn-raised btn-xs"><i class="zmdi zmdi-delete"></i>Eliminar</a></td>
                         </tr>
             <?php
                       }
