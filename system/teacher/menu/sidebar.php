@@ -41,7 +41,7 @@
 							<a href="homework.html"><i class="zmdi zmdi-book zmdi-hc-fw"></i> Tareas</a>
 						</li>
 						<li>
-							<a href="release.html"><i class="zmdi zmdi-card zmdi-hc-fw"></i> Comunicados</a>
+							<a href="StudentList.php"><i class="zmdi zmdi-card zmdi-hc-fw"></i> Listado de Estudiantes</a>
 						</li>
 						<li>
 							<a href="homework.php"><i class="zmdi zmdi-font zmdi-hc-fw"></i> Asignación de Tareas</a>
