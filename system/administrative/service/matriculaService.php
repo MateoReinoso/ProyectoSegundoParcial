@@ -73,9 +73,9 @@ function saveCandidate($cedula,$apellido,$nombre,$direccion,$telefono,$fechaNaci
 }
 function incribeCandidates()
 {
-    $result = findCandidates($codigo);
+    $result = findCandidates();
     while($row = $result->fetch_assoc()) {
-        saveCandidate(row["CEDULA"],row["APELLIDO"],row["NOMBRE"],row["DIRECCION"],row["TELEFONO"],row["FECHA_NACIMIENTO"],row["GENERO"],row["CORREO_PERSONAL"],);
+        saveCandidate(row["CEDULA"],row["APELLIDO"],row["NOMBRE"],row["DIRECCION"],row["TELEFONO"],row["FECHA_NACIMIENTO"],row["GENERO"],row["CORREO_PERSONAL"]);
     }
     
 }
