@@ -120,5 +120,19 @@ function findAlumnoByCedula($cedula)
     $conection = getConection();
     return $conection->query("SELECT * FROM persona where CEDULA=".$cedula);;
 }
-//
+//Asignaturas
+function findAsignatura($codigo)
+{
+    $conection = getConection();
+    return $conection->query("SELECT * FROM asignatura where COD_NIVEL_EDUCATIVO=".$codigo);;
+}
+function insertAsignatura($codigoNivel,$nombre,$creditos,$tipo)
+{
+    $conection = getConection();
+    $stmt = $conection->prepare("INSERT INTO asignatura (COD_NIVEL_EDUCATIVO,  NOMBRE,CREDITOS,TIPO) VALUES (?, ?,?,?)");
+    $stmt->bind_param("ssds",$codigoNivel,$nombre,$creditos,$tipo);
+    $stmt->execute();
+    $stmt->close();
+}
+
 ?>

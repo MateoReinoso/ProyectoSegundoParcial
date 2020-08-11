@@ -105,11 +105,14 @@ if(isset($_POST["nivel"])&&$_POST["accion"]=="Nivel")
                         </select>
                         <input type="submit" name="accion" value="Nivel">
                         </form>
+                        <br><br><br>
+                        
                         <?php
                         if($codigoNivel!="")
 
                         {
                              ?>
+                             <h4>Lista</h4>
                             <table class="table text-white-50 text-center table-bordered ">
                             <tr>
                                 <td>Periodo</td>
@@ -137,8 +140,11 @@ if(isset($_POST["nivel"])&&$_POST["accion"]=="Nivel")
                     }
                 }
                         ?>
+                        </table>
                         </div>
         
+        </div>
+        </div>
         </div>
         
     </section>

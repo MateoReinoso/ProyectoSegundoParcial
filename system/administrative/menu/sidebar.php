@@ -55,7 +55,7 @@
 							<a href="salon.html"><i class="zmdi zmdi-font zmdi-hc-fw"></i> Aulas</a>
 						</li>
 						<li>
-							<a href="teacher_subject.html"><i class="zmdi zmdi-case zmdi-hc-fw"></i> Registro de asignaturas por docente</a>
+							<a href="docente_asignatura.php"><i class="zmdi zmdi-case zmdi-hc-fw"></i> Registro de asignaturas por docente</a>
 						</li>
 					</ul>
 				</li>
