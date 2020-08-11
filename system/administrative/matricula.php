@@ -1,9 +1,13 @@
 <?php
 include './Service/matriculaService.php';
 
-if(isset($_POST["periodo"]))
+if(isset($_POST["periodo"])&&$_POST["accion"]=="Matricular")
 {
  matricular($_POST["periodo"]);
+} 
+if(isset($_POST["periodo"])&&$_POST["accion"]=="Matricular Aspirantes")
+{
+    incribeCandidates();
 }    
 ?>
 <!DOCTYPE html>
@@ -69,7 +73,7 @@ if(isset($_POST["periodo"]))
                         }
                         ?>
                         </select>
-                        <input type="submit" name="accion" value="Matricular">
+                        <input type="submit" name="accion" value="Matricular Aspirantes">
                         </form>
                         </div>
         </div>
