@@ -7,9 +7,9 @@ if(isset($_POST["periodo"])&&$_POST["accion"]=="Matricular")
 {
  matricular($_POST["periodo"]);
 } 
-if(isset($_POST["periodo"])&&$_POST["accion"]=="Registrar")
+if(isset($_POST["periodo1"])&&$_POST["accion"]=="Registrar")
 {
-    incribeCandidates();
+    incribeCandidates($_POST["periodo1"]);
 }
 if(isset($_POST["nivel"])&&$_POST["accion"]=="Nivel")
 {
@@ -69,8 +69,8 @@ if(isset($_POST["nivel"])&&$_POST["accion"]=="Nivel")
                             <?php ?>
                         </h4>
                         <form name="forma" method="post" class="form" action="./matricula.php">
-                        <label for="periodo" class="text-white mb-4">Elija un periodo:</label>
-                        <select id="periodo" name="periodo">
+                        <label for="periodo1" class="text-white mb-4">Elija un periodo:</label>
+                        <select id="periodo1" name="periodo1">
                         <?php
                         $result = findPeriod();
                         while($row = $result->fetch_assoc()) {
