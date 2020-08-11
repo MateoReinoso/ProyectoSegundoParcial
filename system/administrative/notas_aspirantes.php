@@ -57,7 +57,7 @@ if (!empty($_POST)) {
     $result_sql = mysqli_num_rows($sql);
     if($result_sql==0)
     {
-        header('Location: lista_usuarios.php');
+        header('Location: gestion_aspirante.php');
     }else{
         $option = '';
         while($data = mysqli_fetch_array($sql)){

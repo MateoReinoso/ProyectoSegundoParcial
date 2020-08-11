@@ -67,7 +67,7 @@ include "../sql_connection/conexion.php";
             </tr>
             <?php
                 //QUERY PARA LISTAR MODULOS
-                $query = mysqli_query($connection, "SELECT p.COD_PERSONA, p.CEDULA, u.NOMBRE_USUARIO, p.APELLIDO, (p.NOMBRE) as nombre_per, p.DIRECCION, p.TELEFONO, p.FECHA_NACIMIENTO, p.GENERO, p.CORREO, p.CORREO_PERSONAL, u.ULT_FECHA_INGRESO 
+                $query = mysqli_query($connection, "SELECT p.COD_PERSONA, u.COD_USUARIO, p.CEDULA, u.NOMBRE_USUARIO, p.APELLIDO, (p.NOMBRE) as nombre_per, p.DIRECCION, p.TELEFONO, p.FECHA_NACIMIENTO, p.GENERO, p.CORREO, p.CORREO_PERSONAL, u.ULT_FECHA_INGRESO 
                 from persona p 
                 INNER JOIN usuario u on p.COD_PERSONA=u.COD_PERSONA 
                 INNER JOIN rol_usuario ru on u.COD_USUARIO=ru.COD_USUARIO 
@@ -94,7 +94,7 @@ include "../sql_connection/conexion.php";
                             <td><?php echo $data["CORREO_PERSONAL"] ?></td>
                             <td><?php echo $data["ULT_FECHA_INGRESO"] ?></td>
                             <td><a href="actualizar_persona.php?id=<?php echo $data["COD_PERSONA"]."&idr=".$codrol ?>" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i>Editar</a></td>
-                            <td><a href="cambiar_contraseña.php?id=<?php echo $data["COD_PERSONA"]."&idr=".$codrol ?>" class="btn btn-primary btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i>Cambiar Contraseña</a></td>
+                            <td><a href="cambiar_contraseña.php?id=<?php echo $data["COD_USUARIO"]."&idr=".$codrol ?>" class="btn btn-primary btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i>Cambiar Contraseña</a></td>
                             <td><a href="eliminar_persona.php?id=<?php echo $data["COD_PERSONA"]."&idr=".$codrol ?>" class="btn btn-danger btn-raised btn-xs"><i class="zmdi zmdi-delete"></i>Eliminar</a></td>
                         </tr>
             <?php
