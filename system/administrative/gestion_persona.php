@@ -93,9 +93,9 @@ include "../sql_connection/conexion.php";
                             <td><?php if($data["CORREO"]==null){echo 'No disponible';}else{echo $data["CORREO"];} ?></td>
                             <td><?php echo $data["CORREO_PERSONAL"] ?></td>
                             <td><?php echo $data["ULT_FECHA_INGRESO"] ?></td>
-                            <td><a href="actualizar_aspirante.php?id=<?php echo $data["COD_PERSONA"]."&idn=".$codrol ?>" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i>Editar</a></td>
-                            <td><a href="notas_aspirantes.php?id=<?php echo $data["COD_PERSONA"]."&idn=".$codrol ?>" class="btn btn-primary btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i>Ingresar Nota</a></td>
-                            <td><a href="eliminar_aspirante.php?id=<?php echo $data["COD_PERSONA"]."&idn=".$codrol ?>" class="btn btn-danger btn-raised btn-xs"><i class="zmdi zmdi-delete"></i>Eliminar</a></td>
+                            <td><a href="actualizar_persona.php?id=<?php echo $data["COD_PERSONA"]."&idr=".$codrol ?>" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i>Editar</a></td>
+                            <td><a href="cambiar_contraseña.php?id=<?php echo $data["COD_PERSONA"]."&idr=".$codrol ?>" class="btn btn-primary btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i>Cambiar Contraseña</a></td>
+                            <td><a href="eliminar_persona.php?id=<?php echo $data["COD_PERSONA"]."&idr=".$codrol ?>" class="btn btn-danger btn-raised btn-xs"><i class="zmdi zmdi-delete"></i>Eliminar</a></td>
                         </tr>
             <?php
                       }
