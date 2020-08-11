@@ -69,7 +69,6 @@
                     <!-- <label for="COD_ASIGNATURA">Código de Asignatura</label>
                     <input type="text" name="COD_ASIGNATURA" id="COD_ASIGNATURA" placeholder="Codigo de Asignatura"> -->
                     <label for="COD_ASIGNATURA">Materia</label>
-
                     <?php 
                         $query_materia = mysqli_query($connection, "SELECT COD_ASIGNATURA, NOMBRE FROM asignatura");
                         $result_materia = mysqli_num_rows($query_materia);                                              

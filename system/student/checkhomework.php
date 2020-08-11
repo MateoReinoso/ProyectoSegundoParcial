@@ -1,3 +1,6 @@
+<?php
+    include '../sql_connection/conexion.php';
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -13,10 +16,53 @@
     <?php include "menu/sidebar.php" ?>
     <section class="full-box dashboard-contentPage">
         <?php include "../includes/navbar.php" ?>
-        <!-- A PARTIR DE AQUI CREAR CONTENIDO DE LA PAGINA-->
-        <h1>Estudiante</h1>
         <div class="container-fluid">
-            <!-- TODO LO QUE CREEN DEBE IR SEPARADO DENTRO DE ESTE CONTENEDOR-->
+            <section id="container">
+                <div class="form_register">
+                    <h1>Tareas por Realizar</h1>
+                    <hr>
+                    <form action="" method="post">
+                        <label for="rol">Materia</label>
+                        <input type="text" name="rol" id="rol">
+                        <input type="submit" value="Consultar">
+                       
+                    </form>
+                    
+                    <hr>
+                    <table>
+                        <tr>
+                            <TH>Codigo</TH>
+                            <th>Materia</th>
+                            <th>Detalles</th>
+                        </tr>
+                        
+                        <?php
+                        $valor = 5;
+                        $mate = 'Lenguaje';
+                                $query = mysqli_query($connection, "SELECT  a.COD_ASIGNATURA, a.NOMBRE, ta.DETALLE_TAREA 
+                                FROM tarea_asignatura ta, alumno_asignatura_periodo aap, usuario u, asignatura a
+                                WHERE a.NOMBRE = '$mate'
+                                AND aap.COD_ALUMNO = '$valor'
+                                AND u.COD_PERSONA = '$valor'");
+
+                            $resul = mysqli_num_rows($query);
+
+                            if ($resul > 0) {
+                                while ($data = mysqli_fetch_array($query)) {
+                                    ?>
+                        <tr>
+                            <td><?php echo $data["COD_ASIGNATURA"] ?></td>
+                            <td><?php echo $data["NOMBRE"] ?></td>
+                            <td><?php echo $data["DETALLE_TAREA"] ?></td>
+                        </tr>
+                        <?php 
+                                }
+                            }
+
+                        ?>
+                    </table>
+                </div>
+            </section>
 
         </div>
     </section>
