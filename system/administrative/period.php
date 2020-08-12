@@ -52,7 +52,10 @@ while($row = $result->fetch_assoc()) {
                         <div class="featured-text text-center text-lg-left">
                             <h3>Periodo Actual</h3>
                             <h4>
-                            <?php echo ''.$fechaInicio.' '.$fechaFin?>
+                            <?php echo 'Fecha de inicio: '.$fechaInicio?>
+                        </h4>
+                        <h4>
+                            <?php echo 'Fecha fin del ciclo: '.$fechaFin?>
                         </h4>
                         </div>
         </div>

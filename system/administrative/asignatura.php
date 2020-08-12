@@ -66,7 +66,7 @@ if(isset($_POST["codNivel"])&&isset($_POST["accion"])=="Agregar")
                         <?php 
                         }
                         ?>
-                        </select>
+                        </select><br>
                         <input type="submit" name="accion" value="Seleccionar">
                         </form>
                         </div>
@@ -92,7 +92,7 @@ if(isset($_POST["codNivel"])&&isset($_POST["accion"])=="Agregar")
                             <input type="text" id="creditos" name="creditos" value="<?php echo $creditos; ?>"required pattern="[0-9.0]+">
                             <label for="tipo">Tipo:</label>
                             <input type="text" id="tipo" name="tipo" value="<?php echo $tipo; ?>" required>
-                            <?php ?>
+                            <?php ?><br>
                             <input type="submit" name="accion" value="<?php echo $accion ;?>">
                             
                         </form> 
@@ -103,7 +103,7 @@ if(isset($_POST["codNivel"])&&isset($_POST["accion"])=="Agregar")
                         <div class="featured-text text-center text-lg-left">
                         <br><br>
                         <h3>Lista de asignaturas</h3><br><br>
-                        <table class="table text-white-50 text-center table-bordered ">
+                        <table class="table table-hover text-center">
                             <tr>
                                 <td>Nombre</td>
                                 <td>Creditos</td>
