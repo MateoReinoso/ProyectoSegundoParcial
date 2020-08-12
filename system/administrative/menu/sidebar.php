@@ -27,11 +27,6 @@
 			<!-- SideBar Menu -->
 			<ul class="list-unstyled full-box dashboard-sideBar-Menu">
 				<li>
-					<a href="home.html">
-						<i class="zmdi zmdi-view-dashboard zmdi-hc-fw"></i> Panel de Administración
-					</a>
-				</li>
-				<li>
 					<a href="#!" class="btn-sideBar-SubMenu">
 						<i class="zmdi zmdi-case zmdi-hc-fw"></i> Administración <i class="zmdi zmdi-caret-down pull-right"></i>
 					</a>
@@ -69,48 +64,7 @@
 						<i class="zmdi zmdi-account-add zmdi-hc-fw"></i> Gestión de Aspirantes
 					</a>
 				</li>
-				<li>
-					<a href="#!" class="btn-sideBar-SubMenu">
-						<i class="zmdi zmdi-card zmdi-hc-fw"></i> Pagos <i class="zmdi zmdi-caret-down pull-right"></i>
-					</a>
-					<ul class="list-unstyled full-box">
-						<li>
-							<a href="registration.html"><i class="zmdi zmdi-money-box zmdi-hc-fw"></i> Registro</a>
-						</li>
-						<li>
-							<a href="payments.html"><i class="zmdi zmdi-money zmdi-hc-fw"></i> Pagos</a>
-						</li>
-					</ul>
-				</li>
-				<li>
-					<a href="#!" class="btn-sideBar-SubMenu">
-						<i class="zmdi zmdi-shield-security zmdi-hc-fw"></i> Ajustes <i class="zmdi zmdi-caret-down pull-right"></i>
-					</a>
-					<ul class="list-unstyled full-box">
-						<li>
-							<a href="school.html"><i class="zmdi zmdi-balance zmdi-hc-fw"></i> Datos de la institución</a>
-						</li>
-					</ul>
-				</li>
-				<li>
-					<a href="#!" class="btn-sideBar-SubMenu">
-						<i class="zmdi zmdi-graduation-cap zmdi-hc-fw"></i> Escolar <i class="zmdi zmdi-caret-down pull-right"></i>
-					</a>
-					<ul class="list-unstyled full-box">
-						<li>
-							<a href="homework.html"><i class="zmdi zmdi-book zmdi-hc-fw"></i> Tareas</a>
-						</li>
-						<li>
-							<a href="release.html"><i class="zmdi zmdi-card zmdi-hc-fw"></i> Comunicados</a>
-						</li>
-						<li>
-							<a href="score.html"><i class="zmdi zmdi-font zmdi-hc-fw"></i> Calificaciones</a>
-						</li>
-						<li>
-							<a href="assistance.html"><i class="zmdi zmdi-alert-triangle zmdi-hc-fw"></i> Faltas</a>
-						</li>
-					</ul>
-				</li>
+			
 			</ul>
 		</div>
     </section>
