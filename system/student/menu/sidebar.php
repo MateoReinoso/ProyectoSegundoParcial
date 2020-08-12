@@ -25,13 +25,7 @@
 				</ul>
 			</div>
 			<!-- SideBar Menu -->
-			<ul class="list-unstyled full-box dashboard-sideBar-Menu">
-				<li>
-					<a href="home.html">
-						<i class="zmdi zmdi-view-dashboard zmdi-hc-fw"></i> Panel de Administración
-					</a>
-				</li>
-				
+			<ul class="list-unstyled full-box dashboard-sideBar-Menu">	
 				<li>
 					<a href="#!" class="btn-sideBar-SubMenu">
 						<i class="zmdi zmdi-graduation-cap zmdi-hc-fw"></i> Escolar <i class="zmdi zmdi-caret-down pull-right"></i>

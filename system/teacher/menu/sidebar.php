@@ -26,11 +26,6 @@
 			</div>
 			<!-- SideBar Menu -->
 			<ul class="list-unstyled full-box dashboard-sideBar-Menu">
-				<li>
-					<a href="home.html">
-						<i class="zmdi zmdi-view-dashboard zmdi-hc-fw"></i> Panel de Administración
-					</a>
-				</li>
 				
 				<li>
 					<a href="#!" class="btn-sideBar-SubMenu">

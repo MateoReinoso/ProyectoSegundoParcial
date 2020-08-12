@@ -16,7 +16,7 @@ if (!empty($_POST)) {
             WHERE COD_USUARIO='$idusuario'");
         if ($query) {
             $alert = '<p class="msg_save">Contraseña cambiada correctamente</p>';
-            header('Location: gestion_aspirante.php');
+            header('Location: gestion_persona.php');
         } else {
             $alert = '<p class="msg_error">Error al actualizar el usuario</p>';
         }
